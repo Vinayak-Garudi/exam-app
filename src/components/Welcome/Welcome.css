@@ -7,6 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .slide-container {
@@ -28,6 +29,24 @@
     border-radius: 0.3rem;
     min-width: 6.5rem;
     min-height: 1.8rem;
+    cursor: pointer;
+}
+
+.img-spidey {
+    position: absolute;
+    height: 25rem;
+    top: 0;
+    right: 0;
+}
+
+.marvel-img {
+    width: 100%;
+    height: 100%;
+}
+
+.img-avengers {
+    position: absolute;
+    max-width: 75vw;
 }
 
 .slide-btn:disabled {
@@ -36,6 +55,7 @@
 
 .welcome-content {
     margin: 1.5rem;
+    position: absolute;
 }
 
 .welcome-title {
@@ -49,4 +69,5 @@
 .welcome-desc {
     font-size: large;
     margin: 1rem 0;
+    font-weight: 500;
 }
