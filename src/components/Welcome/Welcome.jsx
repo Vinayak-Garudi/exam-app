@@ -3,7 +3,9 @@ import { useDispatch } from 'react-redux'
 import { actions } from '../../store/store'
 import './Welcome.css'
 import SpideyUpDown from '../../images/spidey-upside-down.webp'
-import Avengers from '../../images/avengers-team.webp'
+import Avengers from '../../images/avengers.png'
+import AvengersPhn from '../../images/avengers2.png'
+import Venom from '../../images/venom.png'
 
 const Welcome = () => {
     const dispatch = useDispatch()
@@ -26,15 +28,31 @@ const Welcome = () => {
         <>
             <div className="welcome-container">
                 {
+                    arrNum < welcomeArr.length - 1 ?
+                        <button className='slide-btn' id='skip-id' onClick={() => dispatch(actions.toggleWelcome(false))}>Skip</button> : ""
+                }
+                {
                     arrNum == 0 ?
                         <div className="img-spidey">
                             <img src={SpideyUpDown} className="marvel-img" alt="" />
                         </div> : ""
                 }
                 {
+                    arrNum == 0 ?
+                        <div className="img-venom">
+                            <img src={Venom} className="marvel-img" alt="" />
+                        </div> : ""
+                }
+                {
                     arrNum == 1 ?
                         <div className="img-avengers">
-                            <img style={{"opacity":"0.6"}} src={Avengers} className="marvel-img" alt="" />
+                            <img style={{ "opacity": "0.6" }} src={Avengers} className="marvel-img" alt="" />
+                        </div> : ""
+                }
+                {
+                    arrNum == 1 ?
+                        <div className="phn-avengers">
+                            <img style={{ "opacity": "0.6" }} src={AvengersPhn} className="marvel-img" alt="" />
                         </div> : ""
                 }
 

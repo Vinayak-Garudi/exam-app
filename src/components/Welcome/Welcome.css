@@ -2,7 +2,8 @@
     height: 100vh;
     width: 100vw;
     /* background: linear-gradient(darkslategray, lightslategray); */
-    background: rgb(0, 0, 0, 85%);
+    /* background: rgb(0, 0, 0, 85%); */
+    background: black;
     color: white;
     display: flex;
     justify-content: center;
@@ -30,6 +31,7 @@
     min-width: 6.5rem;
     min-height: 1.8rem;
     cursor: pointer;
+    z-index: 1000;
 }
 
 .img-spidey {
@@ -37,6 +39,7 @@
     height: 25rem;
     top: 0;
     right: 0;
+    z-index: 10;
 }
 
 .marvel-img {
@@ -44,9 +47,19 @@
     height: 100%;
 }
 
+.img-venom {
+    left: 0;
+    top: 10vh;
+    height: 30rem;
+    position: absolute;
+    z-index: 10;
+    opacity: 0.6;
+}
+
 .img-avengers {
     position: absolute;
-    max-width: 75vw;
+    max-width: 65vw;
+    max-height: 100vh;
 }
 
 .slide-btn:disabled {
@@ -56,6 +69,7 @@
 .welcome-content {
     margin: 1.5rem;
     position: absolute;
+    z-index: 1000;
 }
 
 .welcome-title {
@@ -70,4 +84,40 @@
     font-size: large;
     margin: 1rem 0;
     font-weight: 500;
+}
+
+#skip-id {
+    position: absolute;
+    z-index: 1000;
+    top: 3rem;
+    right: 1.5rem;
+}
+
+@media screen and (orientation:portrait) {
+    .img-avengers {
+        display: none;
+    }
+
+    .phn-avengers {
+        height: 100vh;
+        width: 100vw;
+        opacity: 0.6;
+    }
+
+    .img-venom {
+        left: 0;
+        bottom: 0;
+        top: 55vh;
+        height: 35vh;
+        position: absolute;
+        z-index: 10;
+        opacity: 0.6;
+    }
+
+}
+
+@media screen and (orientation:landscape) {
+    .phn-avengers {
+        display: none;
+    }
 }
