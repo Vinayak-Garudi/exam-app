@@ -5,12 +5,12 @@ const appSlice = createSlice({
     initialState: {
         user: "",
         isLogin: false,
-        welcome: true
+        welcome: true,
+        nameReqd: true
     },
     reducers: {
         handleLogin(state, action) {
             state.isLogin = true
-            state.user = "Vinayak Garudi"
         },
         handleLogout(state) {
             state.isLogin = false
@@ -18,6 +18,12 @@ const appSlice = createSlice({
         },
         toggleWelcome(state, action) {
             state.welcome = action.payload
+        },
+        nameReqd(state,action) {
+            state.nameReqd = action.payload
+        },
+        addCred(state,action) {
+            state.user = action.payload
         }
     }
 })

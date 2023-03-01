@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Welcome from '../Welcome/Welcome'
 import { useSelector, useDispatch } from 'react-redux'
 import { actions } from '../../store/store'
@@ -8,6 +8,15 @@ const Home = () => {
     const dispatch = useDispatch()
     const welcome = useSelector(state => state.allSlice.welcome)
     const isLogin = useSelector(state => state.allSlice.isLogin)
+    const nameReqd = useSelector(state => state.allSlice.nameReqd)
+    const user = useSelector(state => state.allSlice.user)
+
+    const [userName, setUserName] = useState("")
+
+    function confirmUserName() {
+        dispatch(actions.addCred(userName))
+        dispatch(actions.nameReqd(false))
+    }
 
     useEffect(() => {
         dispatch(actions.toggleWelcome(true))
@@ -15,9 +24,9 @@ const Home = () => {
     return (
         <>
             {
-                !welcome && isLogin ?
+                !welcome && isLogin && !nameReqd ?
                     <div className="home-container">
-                        Home
+                        Hello {user}
                     </div> : ""
             }
             {
@@ -27,6 +36,18 @@ const Home = () => {
             {
                 welcome ?
                     <Welcome /> : ""
+            }
+            {
+                !welcome && isLogin && nameReqd ?
+                    <div className="enter-name">
+                        <div className="enter-name-div">What should we call you?</div>
+                        <div className="name-ip-div">
+                            <input onChange={e => setUserName(e.target.value)} type="text" className='name-ip' />
+                        </div>
+                        <div className="name-confirm-div">
+                            <button onClick={confirmUserName} className="name-confirm-btn">Confirm</button>
+                        </div>
+                    </div> : ""
             }
 
         </>

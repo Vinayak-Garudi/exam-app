@@ -16,7 +16,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth();
+export const auth = getAuth(app);
 
 // sign up
 export function signUpFunction(email, password) {
@@ -42,16 +42,19 @@ export function SignInFunction(email, password) {
         });
 }
 
-// after sign in
-export function useAuth() {
+// to check auth status
+export function authChanged() {
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            const uid = user.uid;
+            // signed in
+        }
+        else {
+            // signed out
         }
     });
 }
 
 // sign out
-export function signOutFunction() {
+export const signOutFunction = () => {
     return signOut(auth);
 }
