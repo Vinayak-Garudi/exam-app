@@ -3,6 +3,8 @@ import Welcome from '../Welcome/Welcome'
 import { useSelector, useDispatch } from 'react-redux'
 import { actions } from '../../store/store'
 import Auth from '../Auth/Auth'
+import { auth } from '../../Firebase'
+import { updateProfile } from 'firebase/auth'
 
 const Home = () => {
     const dispatch = useDispatch()
@@ -14,8 +16,13 @@ const Home = () => {
     const [userName, setUserName] = useState("")
 
     function confirmUserName() {
-        dispatch(actions.addCred(userName))
-        dispatch(actions.nameReqd(false))
+        updateProfile(auth.currentUser, {
+            displayName: userName
+        }).then(() => {
+            dispatch(actions.nameReqd(false))
+        }).catch((error) => {
+            console.log("username error")
+        });
     }
 
     useEffect(() => {
